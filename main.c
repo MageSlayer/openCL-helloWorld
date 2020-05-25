@@ -103,7 +103,10 @@ int main(int argc, char** argv) {
         return (EXIT_FAILURE);
     }
 
-    ret = clBuildProgram(program, 1, &device, NULL, NULL, NULL);
+    ret = clBuildProgram(program, 1, &device, NULL, NULL, NULL); // works
+    //ret = clBuildProgram(program, 1, &device, "–cl-std=CL1.1", NULL, NULL); // fails
+    //ret = clBuildProgram(program, 1, &device, "–cl-std=CL1.2", NULL, NULL); // fails
+    //ret = clBuildProgram(program, 1, &device, "–cl-std=CL2.0", NULL, NULL); // fails
     
     if(ret != CL_SUCCESS) {
         fprintf(stderr, "error in clBuildProgram\n");
